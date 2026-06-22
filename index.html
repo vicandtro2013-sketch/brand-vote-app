@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブランド投票</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- メニューボタン -->
+  <div class="menu-icon" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- メニュー -->
+  <div id="menu" class="menu">
+    <button onclick="downloadCSV()">CSV出力</button>
+    <button onclick="resetData()">リセット</button>
+  </div>
+
+  <div class="container">
+    <h1>新ブランドデザインの印象は？</h1>
+
+    <button class="good-btn" onclick="vote('good')">
+      👍 Good
+    </button>
+
+    <button class="bad-btn" onclick="vote('bad')">
+      👎 Bad
+    </button>
+  </div>
+
+  <!-- エフェクト表示 -->
+  <div id="effect"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
