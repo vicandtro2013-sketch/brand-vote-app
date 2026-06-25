@@ -48,6 +48,11 @@ button {
   background: #427BBF;
 }
 
+/* Umm */
+.umm-btn {
+  background: #9e9e9e; /* グレー（中立） */
+}
+
 /* Bad */
 .bad-btn {
   background: #EC662A;

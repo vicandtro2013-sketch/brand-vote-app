@@ -1,5 +1,6 @@
 // 保存データ取得（数値化）
 let goodCount = Number(localStorage.getItem('goodCount')) || 0;
+let ummCount = Number(localStorage.getItem('ummCount')) || 0;
 let badCount = Number(localStorage.getItem('badCount')) || 0;
 
 // 連打防止フラグ
@@ -11,29 +12,30 @@ updateDisplay();
 // =====================
 // 投票処理（完全統合版）
 // =====================
+
 function vote(type) {
 
   if (locked) return;
 
   locked = true;
-
   setTimeout(() => {
     locked = false;
   }, 3000);
 
-  // アニメーション
   showEffect(type);
 
   if (type === 'good') {
     goodCount++;
     localStorage.setItem('goodCount', goodCount);
 
-  } else {
+  } else if (type === 'bad') {
     badCount++;
     localStorage.setItem('badCount', badCount);
-  }
 
-  updateDisplay();
+  } else if (type === 'umm') {
+    ummCount++;
+    localStorage.setItem('ummCount', ummCount);
+  }
 }
 
 // =====================
@@ -55,14 +57,14 @@ function downloadCSV() {
   const today = new Date().toISOString().split('T')[0];
 
   let csv =
-`Date,Good,Bad
-${today},${goodCount},${badCount}`;
+`Date,Good,Umm,Bad
+${today},${goodCount},${ummCount},${badCount}`;
 
   const blob = new Blob([csv], { type: 'text/csv' });
 
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.download = `vote-result-${today}.csv`;
+  link.download = `vote-${today}.csv`;
 
   link.click();
 }
@@ -70,19 +72,18 @@ ${today},${goodCount},${badCount}`;
 // =====================
 // リセット
 // =====================
+
 function resetData() {
-
   if (confirm("本当にリセットしますか？")) {
-
     goodCount = 0;
     badCount = 0;
+    ummCount = 0;
 
     localStorage.setItem('goodCount', 0);
     localStorage.setItem('badCount', 0);
+    localStorage.setItem('ummCount', 0);
 
-    updateDisplay();
-
-    alert("リセットしました！");
+    alert("リセットしました");
   }
 }
 
@@ -111,7 +112,12 @@ function showEffect(type) {
   const icon = document.createElement("div");
   icon.className = "effect-icon";
 
-  icon.innerText = (type === "good") ? "👍" : "👎";
+
+icon.innerText =
+  type === "good" ? "👍" :
+  type === "bad" ? "👎" :
+  "😐";
+
 
   icon.style.left = Math.random() * 80 + "%";
   icon.style.top = Math.random() * 80 + "%";
