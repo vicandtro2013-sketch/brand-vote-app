@@ -107,17 +107,14 @@ function showEffect(type) {
 
   const effect = document.getElementById("effect");
 
-  if (!effect) return;
-
   const icon = document.createElement("div");
   icon.className = "effect-icon";
 
-
-icon.innerText =
-  type === "good" ? "👍" :
-  type === "bad" ? "👎" :
-  "😐";
-
+  icon.innerText =
+    type === "good" ? "👍" :
+    type === "umm" ? "😐" :
+    type === "bad" ? "👎" :
+    "";
 
   icon.style.left = Math.random() * 80 + "%";
   icon.style.top = Math.random() * 80 + "%";
@@ -128,3 +125,4 @@ icon.innerText =
     icon.remove();
   }, 800);
 }
+
