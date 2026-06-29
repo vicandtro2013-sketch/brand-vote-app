@@ -16,12 +16,6 @@ body {
 .container {
   text-align: center;
   padding-top: 100px;
-
-  /* うっすら背景 */
-  background: rgba(0,0,0,0.2);
-  display: inline-block;
-  padding: 40px;
-  border-radius: 20px;
 }
 /* タイトル */
 h1 {
