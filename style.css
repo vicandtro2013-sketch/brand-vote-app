@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Meiryo UI", "メイリオ", sans-serif;
+  font-family: UD新ゴ, sans-serif;
   height: 100vh;
   overflow: hidden;
 
@@ -44,12 +44,12 @@ button {
 
 /* Umm */
 .umm-btn {
-  background: #9e9e9e; /* グレー（中立） */
+  background: #9FA0A0; /* グレー（中立） */
 }
 
 /* Bad */
 .bad-btn {
-  background: #EC662A;
+  background: #F28F00;
 }
 
 /* resultは完全に非表示（整理） */
